@@ -8,20 +8,20 @@ Shooter arcade espacial construido con **Phaser 3** en el frontend y una **API R
 
 ---
 
-## ✨ Características
+## Características
 
-- 🎮 Juego arcade completo en Phaser 3 + TypeScript: movimiento, disparo, dificultad progresiva, power-ups, partículas y screen shake.
-- 🔐 Autenticación real con JWT (registro/login) y contraseñas hasheadas con bcrypt.
-- 🏆 Leaderboard global persistente en SQLite.
-- 🎨 Landing page y flujo de auth con diseño propio (tema espacial oscuro), sin frameworks de UI.
-- 🖼️ Todas las texturas del juego se generan por código (sin assets externos que descargar).
-- ✅ Tests de integración del backend (Jest + Supertest) — corriendo en CI-ready.
-- 🐳 Dockerfiles + `docker-compose` para levantar todo con un solo comando.
-- 📐 Arquitectura documentada (`docs/ARCHITECTURE.md`) y contrato de API documentado (`docs/API.md`).
+- Juego arcade completo en Phaser 3 + TypeScript: movimiento, disparo, dificultad progresiva, power-ups, partículas y screen shake.
+- Autenticación real con JWT (registro/login) y contraseñas hasheadas con bcrypt.
+- Leaderboard global persistente en SQLite.
+- Landing page y flujo de auth con diseño propio (tema espacial oscuro), sin frameworks de UI.
+- Todas las texturas del juego se generan por código (sin assets externos que descargar).
+- Tests de integración del backend (Jest + Supertest) — corriendo en CI-ready.
+- Dockerfiles + `docker-compose` para levantar todo con un solo comando.
+- Arquitectura documentada (`docs/ARCHITECTURE.md`) y contrato de API documentado (`docs/API.md`).
 
 ---
 
-## 🧱 Stack técnico
+## Stack técnico
 
 | Capa | Tecnologías |
 |---|---|
@@ -68,9 +68,9 @@ nova-runner/
 
 ---
 
-## 🚀 Cómo ejecutarlo
+## Cómo ejecutarlo
 
-### Opción A — Docker (recomendada, un solo comando)
+### Opción A — Docker 
 
 ```bash
 docker compose up --build
@@ -99,7 +99,7 @@ npm run dev         # http://localhost:5173
 
 ---
 
-## 🧪 Tests
+## Tests
 
 ```bash
 cd backend
@@ -110,7 +110,7 @@ Cobertura actual: registro, login, validaciones de contraseña/email, envío de 
 
 ---
 
-## 🎯 Controles del juego
+## Controles del juego
 
 | Acción | Tecla |
 |---|---|
@@ -122,14 +122,14 @@ Objetivo: sobrevive el mayor tiempo posible esquivando o destruyendo asteroides.
 
 ---
 
-## 📖 Documentación adicional
+## Documentación adicional
 
 - [`docs/ARCHITECTURE.md`](./docs/ARCHITECTURE.md) — decisiones de diseño, capas y flujo de datos.
 - [`docs/API.md`](./docs/API.md) — contrato completo de la API REST.
 
 ---
 
-## 🗺️ Roadmap (mejoras futuras documentadas a propósito)
+## Roadmap (mejoras futuras documentadas a propósito)
 
 - [ ] Migración opcional a PostgreSQL + Prisma para despliegues multi-instancia.
 - [ ] Anti-cheat server-side (validación de score alcanzable según duración).
@@ -137,8 +137,3 @@ Objetivo: sobrevive el mayor tiempo posible esquivando o destruyendo asteroides.
 - [ ] Tests end-to-end (Playwright) del flujo completo landing → auth → partida.
 - [ ] Code-splitting por escena con `import()` dinámico.
 
----
-
-## 👩‍💻 Autoría
-
-Proyecto desarrollado como pieza de portafolio para demostrar desarrollo full stack (API REST, autenticación, base de datos, testing, containerización) integrado con desarrollo de videojuegos en Phaser 3.
