@@ -1,6 +1,6 @@
-# 🚀 NovaRunner
+# 🚀 Nova Runner
 
-Space arcade shooter built with **Phaser 3** on the frontend and a **full stack REST API** on the backend (Node.js/Express/TypeScript + SQLite). Includes user authentication, progress persistence and a global leaderboard.
+Shooter arcade espacial construido con **Phaser 3** en el frontend y una **API REST full stack** en el backend (Node.js/Express/TypeScript + SQLite). Incluye autenticación de usuarios, persistencia de progreso y un leaderboard global. 
 
 ![status](https://img.shields.io/badge/backend-9%2F9%20tests%20passing-brightgreen)
 ![status](https://img.shields.io/badge/typescript-strict-blue)
@@ -8,103 +8,93 @@ Space arcade shooter built with **Phaser 3** on the frontend and a **full stack 
 
 ---
 
-## Characteristics
+## Características
 
-- Complete arcade game in Phaser 3 + TypeScript: movement, shooting, progressive difficulty, power-ups, particles and screen shake.
-- Real authentication with JWT (registration/login) and passwords hashed with bcrypt.
-
-Persistent global leaderboard in SQLite.
-
-Custom-designed landing page and authentication flow (dark space theme), no UI frameworks.
-
-All game textures are generated code-wise (no external assets to download).
-
-Backend integration tests (Jest + Supertest) — running on CI-ready.
-
-Dockerfiles + `docker-compose` to launch everything with a single command.
-
-Documented architecture (`docs/ARCHITECTURE.md`) and documented API contract (`docs/API.md`).
-
---
-
-## Technical Stack
-
-| Layer | Technologies |
-
----|---|
-
-| Game | Phaser 3, TypeScript, Vite |
-
-| Web Frontend | HTML5, CSS3 (no frameworks), Fetch API |
-
-| Backend | Node.js, Express, TypeScript |
-| Database | SQLite (`better-sqlite3`) |
-| Auth | JWT (`jsonwebtoken`), `bcryptjs` |
-| Validation | Zod |
-| Security | Helmet, CORS, rate limiting |
-| Testing | Jest, Supertest, ts-jest |
-| Infrastructure | Docker, docker-compose, nginx |
+- Juego arcade completo en Phaser 3 + TypeScript: movimiento, disparo, dificultad progresiva, power-ups, partículas y screen shake.
+- Autenticación real con JWT (registro/login) y contraseñas hasheadas con bcrypt.
+- Leaderboard global persistente en SQLite.
+- Landing page y flujo de auth con diseño propio (tema espacial oscuro), sin frameworks de UI.
+- Todas las texturas del juego se generan por código (sin assets externos que descargar).
+- Tests de integración del backend (Jest + Supertest) — corriendo en CI-ready.
+- Dockerfiles + `docker-compose` para levantar todo con un solo comando.
+- Arquitectura documentada (`docs/ARCHITECTURE.md`) y contrato de API documentado (`docs/API.md`).
 
 ---
 
-## 📂 Project Structure
+## Stack técnico
+
+| Capa | Tecnologías |
+|---|---|
+| Juego | Phaser 3, TypeScript, Vite |
+| Frontend web | HTML5, CSS3 (sin frameworks), Fetch API |
+| Backend | Node.js, Express, TypeScript |
+| Base de datos | SQLite (`better-sqlite3`) |
+| Auth | JWT (`jsonwebtoken`), `bcryptjs` |
+| Validación | Zod |
+| Seguridad | Helmet, CORS, rate limiting |
+| Testing | Jest, Supertest, ts-jest |
+| Infraestructura | Docker, docker-compose, nginx |
+
+---
+
+## 📂 Estructura del proyecto
 
 ```
 nova-runner/
 ├── backend/
-│ ├── src/
-│ │ ├── routes/ # auth, users, scores
-│ │ ├── middleware/ # auth (JWT), error handling
-│ │ ├── app.ts # Express composition (testable)
-│ │ ├── server.ts # entry point
-│ │ ├── db.ts # SQLite + migrations
-│ │ ├── jwt.ts / config.ts / logger.ts
-│ ├── tests/ # integration tests (Jest + Supertest)
-│ └── Dockerfile
+│   ├── src/
+│   │   ├── routes/          # auth, users, scores
+│   │   ├── middleware/      # auth (JWT), manejo de errores
+│   │   ├── app.ts           # composición de Express (testeable)
+│   │   ├── server.ts        # entry point
+│   │   ├── db.ts            # SQLite + migraciones
+│   │   ├── jwt.ts / config.ts / logger.ts
+│   ├── tests/                # tests de integración (Jest + Supertest)
+│   └── Dockerfile
 ├── frontend/
-│ ├── src/
-│ │ ├── scenes/ # Boot, Preload, Menu, Game, GameOver, Leaderboard
-│ │ ├── entities/ # Player, AsteroidSpawner, Starfield
-│ │ ├── services/ # api.ts, session.ts, eventBus.ts
-│ │ ├── main.ts # DOM orchestrator (landing/auth/game)
-│ │ └── style.css
-│ ├── index.html
-│ └── Dockerfile
+│   ├── src/
+│   │   ├── scenes/           # Boot, Preload, Menu, Game, GameOver, Leaderboard
+│   │   ├── entities/          # Player, AsteroidSpawner, Starfield
+│   │   ├── services/           # api.ts, session.ts, eventBus.ts
+│   │   ├── main.ts             # orquestador DOM (landing/auth/juego)
+│   │   └── style.css
+│   ├── index.html
+│   └── Dockerfile
 ├── docs/
-│ ├── ARCHITECTURE.md
-│ └── API.md
+│   ├── ARCHITECTURE.md
+│   └── API.md
 └── docker-compose.yml
 ```
 
 ---
 
-## How to run it
+## Cómo ejecutarlo
 
-### Option A — Docker
+### Opción A — Docker 
 
 ```bash
 docker compose up --build
 ```
 
-- Backend available at `http://localhost:4000`
-- Frontend available at `http://localhost:8080`
+- Backend disponible en `http://localhost:4000`
+- Frontend disponible en `http://localhost:8080`
 
-### Option B — Local, without Docker
+### Opción B — Local, sin Docker
 
 **Backend**
 ```bash
 cd backend
 cp .env.example .env
 npm install
-npm run dev # http://localhost:4000
+npm run dev        # http://localhost:4000
 ```
 
-**Frontend** (in another terminal)
+**Frontend** (en otra terminal)
 ```bash
 cd frontend
 cp .env.example .env
 npm install
-npm run dev # http://localhost:5173
+npm run dev         # http://localhost:5173
 ```
 
 ---
@@ -116,38 +106,34 @@ cd backend
 npm test
 ```
 
-Current coverage: registration, login, password/email validation, authenticated score submission, rejection of out-of-range scores, and correct leaderboard order.
+Cobertura actual: registro, login, validaciones de contraseña/email, envío de puntaje autenticado, rechazo de puntajes fuera de rango y orden correcto del leaderboard.
 
 ---
 
-## Game Controls
+## Controles del juego
 
-| Action | Key |
+| Acción | Tecla |
+|---|---|
+| Mover | Flechas o `WASD` |
+| Disparar | `Espacio` |
+| Escudo temporal | Recógelo al vuelo (power-up cian) |
 
----|---|
-
-Move | Arrow keys or `WASD` |
-
-Shoot | `Space` |
-
-Temporary Shield | Catch it on the fly (cyan power-up) |
-
-Objective: Survive as long as possible by dodging or destroying asteroids. The score increases with survival time and with each asteroid destroyed.
+Objetivo: sobrevive el mayor tiempo posible esquivando o destruyendo asteroides. El puntaje sube con el tiempo sobrevivido y con cada asteroide destruido.
 
 ---
 
-## Additional Documentation
+## Documentación adicional
 
-- [`docs/ARCHITECTURE.md`](./docs/ARCHITECTURE.md) — design decisions, layers, and data flow.
-
-- [`docs/API.md`](./docs/API.md) — complete REST API contract.
+- [`docs/ARCHITECTURE.md`](./docs/ARCHITECTURE.md) — decisiones de diseño, capas y flujo de datos.
+- [`docs/API.md`](./docs/API.md) — contrato completo de la API REST.
 
 ---
 
-## Roadmap (documented future improvements)
+## Roadmap (mejoras futuras documentadas a propósito)
 
-- [ ] Optional migration to PostgreSQL + Prisma for multi-instance deployments.
-- [ ] Server-side anti-cheat (score validation based on duration).
-- [ ] Real-time leaderboard via WebSockets.
-- [ ] End-to-end tests (Playwright) of the complete landing → auth → game flow.
-- [ ] Code splitting by scene with dynamic `import()`.
+- [ ] Migración opcional a PostgreSQL + Prisma para despliegues multi-instancia.
+- [ ] Anti-cheat server-side (validación de score alcanzable según duración).
+- [ ] Leaderboard en tiempo real vía WebSockets.
+- [ ] Tests end-to-end (Playwright) del flujo completo landing → auth → partida.
+- [ ] Code-splitting por escena con `import()` dinámico.
+
