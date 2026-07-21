@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nova Runner — Arcade Espacial</title>
+    <meta name="description" content="Nova Runner: shooter arcade espacial construido con Phaser 3, TypeScript y una API full stack con leaderboard global." />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <!-- Landing / hero -->
+      <header id="landing" class="screen">
+        <div class="landing-inner">
+          <div class="badge">Arcade</div>
+          <h1>NOVA <span>RUNNER</span></h1>
+          <p class="tagline">
+            Esquiva. Dispara. Sobrevive. Un shooter arcade espacial con
+            cuenta de usuario, progreso guardado y tabla global de puntajes.
+          </p>
+          <div class="cta-row">
+            <button id="btn-play" class="btn btn-primary">Jugar ahora</button>
+            <button id="btn-leaderboard" class="btn btn-secondary">Ver ranking global</button>
+          </div>
+          <ul class="tech-list">
+            <li>Phaser 3</li>
+            <li>TypeScript</li>
+            <li>Node.js / Express</li>
+            <li>JWT Auth</li>
+            <li>SQLite</li>
+            <li>Vite</li>
+          </ul>
+        </div>
+      </header>
+
+      <!-- Overlay de autenticación -->
+      <section id="auth-overlay" class="screen hidden">
+        <div class="panel">
+          <div class="panel-tabs">
+            <button id="tab-login" class="tab active">Iniciar sesión</button>
+            <button id="tab-register" class="tab">Crear cuenta</button>
+          </div>
+
+          <form id="form-login" class="auth-form">
+            <label>Correo electrónico
+              <input type="email" id="login-email" required autocomplete="email" />
+            </label>
+            <label>Contraseña
+              <input type="password" id="login-password" required autocomplete="current-password" minlength="8" />
+            </label>
+            <button type="submit" class="btn btn-primary full">Entrar</button>
+            <p class="form-error" id="login-error"></p>
+          </form>
+
+          <form id="form-register" class="auth-form hidden">
+            <label>Nombre de usuario
+              <input type="text" id="register-username" required minlength="3" maxlength="20" pattern="[a-zA-Z0-9_]+" />
+            </label>
+            <label>Correo electrónico
+              <input type="email" id="register-email" required autocomplete="email" />
+            </label>
+            <label>Contraseña
+              <input type="password" id="register-password" required autocomplete="new-password" minlength="8" />
+            </label>
+            <button type="submit" class="btn btn-primary full">Registrarme</button>
+            <p class="form-error" id="register-error"></p>
+          </form>
+
+          <button id="btn-guest" class="btn btn-ghost full">Jugar como invitado (sin guardar puntaje)</button>
+          <button id="btn-close-auth" class="btn btn-ghost full">Volver</button>
+        </div>
+      </section>
+
+      <!-- Juego -->
+      <section id="game-screen" class="screen hidden">
+        <div class="hud">
+          <button id="btn-exit-game" class="btn btn-ghost small">← Salir</button>
+          <span id="hud-user"></span>
+        </div>
+        <div id="game-container"></div>
+      </section>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
