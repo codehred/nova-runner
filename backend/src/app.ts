@@ -9,11 +9,16 @@ import { usersRouter } from './routes/users';
 import { scoresRouter } from './routes/scores';
 import { errorHandler, notFoundHandler } from './middleware/errorHandler';
 
+
+
 export function createApp(): Express {
   const app = express();
 
   app.use(helmet());
-  app.use(cors({ origin: config.corsOrigin }));
+  app.use(cors({ 
+  origin: config.corsOrigin || 'https://nova-runner.vercel.app',
+  credentials: true 
+  }));
   app.use(express.json({ limit: '10kb' }));
 
   if (!config.isTest) {
